@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<!--
+I love when people check under the hood. This whole website is open-sourced
+on GitHub (https://github.com/merlinrebrovic/merlin.rebrovic.net). Feel free
+check out the building blocks.
+
+You can also subscribe to blog posts by following me on Twitter
+https://twitter.com/merlinrebrovic
+-->
+<html lang="en" itemscope itemtype="http://schema.org/BlogPosting" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#20201C">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <title>Bias and discrimination in machine learning – Merlin Rebrović</title>
+    <meta itemprop="name"
+          property="og:title"
+          name="twitter:title"
+          content="Bias and discrimination in machine learning">
+    <meta itemprop="description"
+          property="og:description"
+          name="twitter:description"
+          content="If we're not careful, we could harm other people on an unprecedented scale.">
+    <meta itemprop="image"
+          property="og:image"
+          name="twitter:image:src"
+          content="http://merlin.rebrovic.net/media/img/default_cover_photo.png">
+    <meta itemprop="url"
+          property="og:url"
+          content="http://merlin.rebrovic.net/blog/ml-bias.html" />
+    <meta itemprop="datePublished"
+          property="article:published_time"
+          content="2017-08-03" />
+    <meta itemprop="articleSection"
+          property="article:section"
+          content="Tech" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@merlinrebrovic">
+    <meta property="og:type" content="article" />    <link rel="stylesheet" href="/media/css/fonts.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/style.css?v=c0f00a" type="text/css">
+</head>
+<body>
+    <header>
+    <div id="top" class="clearfix">
+
+                                        
+                    <span class="current-location">Location: Blog</span>        
+                            
+                            
+    
+        <a href="#bottom-nav">Menu &#x25bc;</a>
+    </div>
+    <nav id="top-nav" class="clearfix">
+<ul class="clearfix">
+                <li><a
+        href="/index.html">Home</a></li>
+    
+                <li class="active"><a
+        href="/blog/">Blog</a></li>
+    
+                <li><a
+        href="/speaking.html">Speaking</a></li>
+    
+                <li><a
+        href="/about.html">About</a></li>
+    
+    </ul>
+</nav>
+    </header>
+
+    <div id="main-content" class="clearfix">
+                <article class="reading-block">
+
+<h1 itemprop="headline">Bias and discrimination in machine&nbsp;learning</h1>
+<p class="post-meta">
+    Posted on
+    <time datetime="2017-08-03">
+    2017-08-03
+    </time> in
+    <span>Tech</span>
+</p>
+
+<div itemprop="articleBody">
+<p>Imagine a group of government officials who take and process
+passport applications. The application consists of filling in
+a form and handing over one photo of the applicant&#8217;s face. All
+officials try to do good work except one. That official is
+racist and rejects every application from a person who looks
+different. The people in the government notice the
+discrimination. They decide to introduce a machine that will
+learn from all applications processed by good officials. The
+machine is consistent; it equalizes criteria for all
+applications, so current and future discrimination is gone.
+But is&nbsp;it?</p>
+<p>At first glance, everything works fine. However, over time the
+people at the government get many complaints from people of
+Asian descent: photos with distinctly Asian facial features
+usually don&#8217;t pass automated checks. How is that possible?
+Shouldn&#8217;t the machine be&nbsp;consistent?</p>
+<p>The example above is not imaginary; it&#8217;s based on real-world
+situations. A man&#8217;s <a href="http://www.dailymail.co.uk/news/article-4007714/New-Zealand-passport-gate-s-awkward-reason-failing-recognise-Asian-man-s-face.html">visa application was rejected in New
+Zealand</a> because the machine thought his eyes were closed
+on his photo. A face-detection software in cameras <a href="http://content.time.com/time/business/article/0,8599,1954643,00.html">asks if
+someone is blinking</a> if the camera is pointed toward a
+person of Asian descent. This can happen to any type of face.
+<a href="https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms">An <span class="caps">MIT</span> grad student</a> found that a publicly available
+software for face detection didn&#8217;t recognize faces with dark
+skin tones at&nbsp;all. </p>
+<p>Let&#8217;s acknowledge that many such outcomes are not intentional.
+The underlying problem is that a machine learned from
+incomplete data: photos of people of Asian descent or with
+dark skin were not used as learning examples. The machine
+learned that the whole population consists only of people with
+fair skin, and held an implicit bias against those who were
+not in that&nbsp;population.</p>
+<p>The fix for this, and for the more general problem of bias and
+discrimination in machine learning, is hard for many&nbsp;reasons:</p>
+<ul>
+<li>People don&#8217;t realize they aren&#8217;t inclusive. It&#8217;s easy to
+  recognize a movie star in the latest blockbuster. In
+  contrast, it&#8217;s hard to notice that a small-time actor, who
+  played in a couple of movies ten years ago, didn&#8217;t make a
+  movie since then. Likewise, it&#8217;s easier to notice an error
+  in training examples you have than to notice that some
+  examples are&nbsp;missing.</li>
+<li>Having many good and diverse examples needed for machine
+  learning is rare. Bigger companies and institutions might
+  have them, but the examples are usually not shared for
+  business or privacy reasons (think medical&nbsp;records).</li>
+<li>Companies operate in a system that favors firstcomers so
+  they&#8217;re often incentivized to release early. Some of them
+  rush and don&#8217;t think through all the consequences their
+  machine learning models might&nbsp;have.</li>
+</ul>
+<p>When I had an issue at a counter in Croatia, I would go to
+another one or come back later; the issue would go away
+because a different person would be sitting there. However,
+what if there is only one machine behind every counter at all
+times? Or at border crossings? Or in hospitals and schools? We
+have to fix the problem of bias in machine learning because
+the alternative is not an&nbsp;option. </p></div>
+</article>
+
+<hr class="reading-block">
+
+<p class="reading-block">Don’t miss this one:<br />
+     <a href="/blog/consistency.html">
+    Consistency</a>
+</p>
+
+        </div>
+    <nav id="bottom-nav" class="clearfix">
+<ul class="clearfix">
+                <li><a
+        href="/index.html">Home</a></li>
+    
+                <li class="active"><a
+        href="/blog/">Blog</a></li>
+    
+                <li><a
+        href="/speaking.html">Speaking</a></li>
+    
+                <li><a
+        href="/about.html">About</a></li>
+    
+    </ul>
+</nav>
+    <a href="#top" class="back-to-top">Back to top &#x25b2;</a>
+
+<script src="/media/js/app.js?v=2d804c"></script>
+</body>
+</html>

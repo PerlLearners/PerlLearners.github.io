@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<!--
+I love when people check under the hood. This whole website is open-sourced
+on GitHub (https://github.com/merlinrebrovic/merlin.rebrovic.net). Feel free
+check out the building blocks.
+
+You can also subscribe to blog posts by following me on Twitter
+https://twitter.com/merlinrebrovic
+-->
+<html lang="en" itemscope itemtype="http://schema.org/BlogPosting" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#20201C">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <title>Redesigning Skype for Android Chat – Merlin Rebrović</title>
+    <meta itemprop="name"
+          property="og:title"
+          name="twitter:title"
+          content="Redesigning Skype for Android Chat">
+    <meta itemprop="description"
+          property="og:description"
+          name="twitter:description"
+          content="A redesign of Skype for Android chat window as a part of my World Information Architecture Day presentation.">
+    <meta itemprop="image"
+          property="og:image"
+          name="twitter:image:src"
+          content="http://merlin.rebrovic.net/media/external/2014-02-18_skype_new.png">
+    <meta itemprop="url"
+          property="og:url"
+          content="http://merlin.rebrovic.net/blog/redesigning-skype-for-android-chat.html" />
+    <meta itemprop="datePublished"
+          property="article:published_time"
+          content="2014-02-18" />
+    <meta itemprop="articleSection"
+          property="article:section"
+          content="Design" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@merlinrebrovic">
+    <meta property="og:type" content="article" />    <link rel="stylesheet" href="/media/css/fonts.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/style.css?v=c0f00a" type="text/css">
+</head>
+<body>
+    <header>
+    <div id="top" class="clearfix">
+
+                                        
+                    <span class="current-location">Location: Blog</span>        
+                            
+                            
+    
+        <a href="#bottom-nav">Menu &#x25bc;</a>
+    </div>
+    <nav id="top-nav" class="clearfix">
+<ul class="clearfix">
+                <li><a
+        href="/index.html">Home</a></li>
+    
+                <li class="active"><a
+        href="/blog/">Blog</a></li>
+    
+                <li><a
+        href="/speaking.html">Speaking</a></li>
+    
+                <li><a
+        href="/about.html">About</a></li>
+    
+    </ul>
+</nav>
+    </header>
+
+    <div id="main-content" class="clearfix">
+                <article class="reading-block">
+
+<h1 itemprop="headline">Redesigning Skype for Android&nbsp;Chat</h1>
+<p class="post-meta">
+    Posted on
+    <time datetime="2014-02-18">
+    2014-02-18
+    </time> in
+    <span>Design</span>
+</p>
+
+<div itemprop="articleBody">
+<p>The third <a href="http://worldiaday.org/">World Information Architecture Day</a> took
+place on February 15 by organizing local events around the
+world. <span class="caps">UX</span> Passion organized it for <a href="http://www.wiad.hr/">the first time in
+Zagreb</a>. I was invited to speak about iOS and Android
+design&nbsp;guidelines.</p>
+<p>I presented a few examples of good and bad navigation
+decisions on both platforms. Skype for Android chat was used
+as a &#8220;somewhere in the middle&#8221; example where I suggested
+another (<span class="caps">IMHO</span> better) solution. I would like to expand on that
+example and explain my thought process. <em>Please note that my
+only focus is layout and navigation of the chat screen, not
+overall performance and user&nbsp;experience.</em></p>
+<p>Here is the current chat screen for&nbsp;reference:</p>
+<p><img src="/media/external/2014-02-18_skype_old.png" alt="Current Skype chat on Android." /></p>
+<h2>Problems</h2>
+<ol>
+<li>
+<p>Action bar looks out of place with a non-standard Up arrow
+   and a centered title. But that&#8217;s just a minor&nbsp;detail.</p>
+</li>
+<li>
+<p>The bottom blue bar is a continuation of the Action bar,
+   but it has only two icons that could fit at the top.
+   Official guidelines allow this pattern, but it has been
+   avoided because it often shows too many icons not needed at
+   the moment. Also, with the on-screen navigation menu (like
+   here) it&#8217;s easy to accidentally press Home or Back&nbsp;button.</p>
+</li>
+<li>
+<p>That blue bottom bar hides itself when you start typing,
+   but if you select any text, contextual actions are rendered
+   in the same bar which then overlays the actual selection.
+   Those actions are usually present on the top Action bar.
+   <p>
+   <img src="/media/external/2014-02-18_skype_text_select.png" alt="Text selection shows a toolbar with actions that hides
+   all other content and makes it unusable." /></p></p>
+</li>
+<li>
+<p>Send and Emoticons buttons are too close, made more
+   problematic by Emoticons icon being very&nbsp;small.</p>
+</li>
+<li>
+<p>Something not visible from the screenshot is navigation. Up
+   and Back buttons do the same thing, get you back to the
+   list of chats. That&#8217;s <span class="caps">OK</span> if you came from there, but if
+   you&#8217;ve landed on a specific chat from a notification or
+   somewhere else, Back button should return you where you
+   were before, even if it was a different application. To
+   make matters worse, top right Chat icon&#8212;that turns orange
+   when there are new messages&#8212;also returns you to the list
+   of chats. Now you have three controls on the screen
+   <em>navigating to the same destination.</em>
+   <p>
+   <img src="/media/external/2014-02-18_skype_navigation.png" alt="Three navigation controls leading to the same screen." /></p></p>
+</li>
+<li>
+<p>When you tap three dots in the current chat, you get
+   <em>contact actions</em>. I&#8217;m not sure why they are needed here;
+   it makes more sense to have them on the contact&#8217;s profile
+   screen or list of contacts.
+   <p>
+   <img src="/media/external/2014-02-18_skype_actionoverflow_old.png" alt="Unnecessary actions." /></p></p>
+</li>
+</ol>
+<p>How did all of that happen? Let&#8217;s try to find&nbsp;out.</p>
+<h2>Influence by other&nbsp;platforms</h2>
+<p>Let&#8217;s look at Windows Phone and&nbsp;iPhone.</p>
+<p><img src="/media/external/2014-02-18_skype_wp_ios.png" alt="Windows Phone and iPhone versions of Skype chat." /></p>
+<p>Both versions are conforming to their respective platform
+guidelines. But does iPhone&#8217;s top Navigation bar looks
+familiar? Or Windows&#8217; bottom blue bar with video and audio
+calls? Or even the &#8220;plus, type a message here, emoticons&#8221;&nbsp;row?</p>
+<p>No wonder Android looks like Frankenstein&#8217;s monster assembled
+from spare parts. Let&#8217;s try to fix&nbsp;that.</p>
+<h2>Action&nbsp;bar</h2>
+<ul>
+<li>Use Up button with an icon that changes when new messages
+  are&nbsp;present.</li>
+<li>Screen title is to the left leaving some space for
+  main actions. If the screen is smaller, they will be pushed
+  to action&nbsp;overflow.</li>
+<li>All action overflow items should be removed except &#8220;View&nbsp;profile&#8221;.</li>
+<li>Old Chat icon is not needed&nbsp;anymore.</li>
+</ul>
+<p>I didn&#8217;t modify any visuals on purpose; I just wanted to
+change layout and information architecture. That being said,
+having a blue or light gray background and switching from
+Segoe <span class="caps">UI</span> Bold to a lighter typeface&#8212;or even system
+font&#8212;could look better and less clutered on&nbsp;Android.</p>
+<p>Before:
+<img src="/media/external/2014-02-18_skype_actionbar_old.png" alt="" /></p>
+<p>After:
+<img src="/media/external/2014-02-18_skype_actionbar_new.png" alt="" />
+<img src="/media/external/2014-02-18_skype_actionbar_notification.png" alt="" /></p>
+<h2>Message input&nbsp;area</h2>
+<ul>
+<li>The bottom blue bar is obsolete and can be&nbsp;removed.</li>
+<li>Everything can be pushed down leaving more space for&nbsp;content.</li>
+<li>Leave the input area a bit higher to make the touch target&nbsp;bigger.</li>
+</ul>
+<p>The plus icon is problematic. It opens a pop-up with actions
+like &#8220;Send file&#8221;, &#8220;Take photo&#8221; or &#8220;Add participants&#8221;. It
+doesn&#8217;t seem to me they are used regularly, especially on a
+mobile phone. But I&#8217;m not sure, I&#8217;m just assuming. It&#8217;s there
+on Windows Phone, but hidden on iPhone (top right&nbsp;icon).</p>
+<p>If this was a real redesign and I had enough time, I would
+wire up some analytics and wait until I get statistically
+significant results. Let&#8217;s assume for now users don&#8217;t use
+those actions too much. In that case, we can push it to action
+overflow. Emoticon icon can be enlarged and moved to the other
+side; there shouldn&#8217;t be any accidental taps&nbsp;now.</p>
+<p>Before:
+<img src="/media/external/2014-02-18_skype_bottom_old.png" alt="" /></p>
+<p>After:
+<img src="/media/external/2014-02-18_skype_bottom_new.png" alt="" /></p>
+<h2>Complete&nbsp;solution</h2>
+<p>Here is the complete solution with the action overflow&nbsp;opened.</p>
+<p><img src="/media/external/2014-02-18_skype_new.png" alt="Redesigned Skype chat on Android." /></p>
+<h2>Conclusion</h2>
+<p>Transferring patterns from other platforms is the cause of
+many problems. Some of them&nbsp;are:</p>
+<ul>
+<li>Users don&#8217;t find the app familiar and have to invest more
+  time to learn navigation and behavior. And it always stands
+  out like a black&nbsp;sheep.</li>
+<li>It&#8217;s usually harder for engineers to recreate non-standard
+  patterns in code. It takes more time to develop with more
+  bugs&#8212;both mean more money&nbsp;wasted.</li>
+</ul>
+<p>There are so many ways to positively impact user experience
+and innovate without messing with navigation and information
+architecture. For a communication application it could be
+speed, sound and video quality, resilience to crashing and
+dropping calls, cross-platform and cross-device&nbsp;usage.</p>
+<p>The general advice is to use what platform provides in 95% of
+the cases; it&#8217;s easier not to make a mistake that way. If you
+need to deviate, do it with a purpose and a valid&nbsp;reason.</p>
+<h2>Update: March 23,&nbsp;2016</h2>
+<blockquote class="twitter-tweet"
+            data-link-color="#06736C"             data-dnt="true">     <p>I installed @Skype for Android. Noticed
+its chat looks almost exactly like my #<span class="caps">WIAD</span> redesign from 2
+years ago&nbsp;http://merlin.rebrovic.net/blog/redesigning-skype-for-android-chat</p>
+    &mdash; @merlinrebrovic
+    <a href="https://twitter.com/merlinrebrovic/status/696350876471009281">2016-02-07</a>
+</blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+</article>
+
+<hr class="reading-block">
+
+<p class="reading-block">Don’t miss this one:<br />
+     <a href="/blog/ux-field-diversity.html">
+    User experience field diversity</a>
+</p>
+
+        </div>
+    <nav id="bottom-nav" class="clearfix">
+<ul class="clearfix">
+                <li><a
+        href="/index.html">Home</a></li>
+    
+                <li class="active"><a
+        href="/blog/">Blog</a></li>
+    
+                <li><a
+        href="/speaking.html">Speaking</a></li>
+    
+                <li><a
+        href="/about.html">About</a></li>
+    
+    </ul>
+</nav>
+    <a href="#top" class="back-to-top">Back to top &#x25b2;</a>
+
+<script src="/media/js/app.js?v=2d804c"></script>
+</body>
+</html>

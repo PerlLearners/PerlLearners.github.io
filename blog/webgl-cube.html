@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<!--
+I love when people check under the hood. This whole website is open-sourced
+on GitHub (https://github.com/merlinrebrovic/merlin.rebrovic.net). Feel free
+check out the building blocks.
+
+You can also subscribe to blog posts by following me on Twitter
+https://twitter.com/merlinrebrovic
+-->
+<html lang="en" itemscope itemtype="http://schema.org/BlogPosting" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#20201C">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <title>WebGL cube – Merlin Rebrović</title>
+    <meta itemprop="name"
+          property="og:title"
+          name="twitter:title"
+          content="WebGL cube">
+    <meta itemprop="description"
+          property="og:description"
+          name="twitter:description"
+          content="Technology and motivation behind my experiment of building a WebGL cube that responds to device rotation.">
+    <meta itemprop="image"
+          property="og:image"
+          name="twitter:image:src"
+          content="http://merlin.rebrovic.net/media/external/2016-01-10_webgl_sketch.jpg">
+    <meta itemprop="url"
+          property="og:url"
+          content="http://merlin.rebrovic.net/blog/webgl-cube.html" />
+    <meta itemprop="datePublished"
+          property="article:published_time"
+          content="2016-01-10" />
+    <meta itemprop="articleSection"
+          property="article:section"
+          content="Tech" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@merlinrebrovic">
+    <meta property="og:type" content="article" />    <link rel="stylesheet" href="/media/css/fonts.css" type="text/css">
+    <link rel="stylesheet" href="/media/css/style.css?v=c0f00a" type="text/css">
+</head>
+<body>
+    <header>
+    <div id="top" class="clearfix">
+
+                                        
+                    <span class="current-location">Location: Blog</span>        
+                            
+                            
+    
+        <a href="#bottom-nav">Menu &#x25bc;</a>
+    </div>
+    <nav id="top-nav" class="clearfix">
+<ul class="clearfix">
+                <li><a
+        href="/index.html">Home</a></li>
+    
+                <li class="active"><a
+        href="/blog/">Blog</a></li>
+    
+                <li><a
+        href="/speaking.html">Speaking</a></li>
+    
+                <li><a
+        href="/about.html">About</a></li>
+    
+    </ul>
+</nav>
+    </header>
+
+    <div id="main-content" class="clearfix">
+                <article class="reading-block">
+
+<h1 itemprop="headline">WebGL&nbsp;cube</h1>
+<p class="post-meta">
+    Posted on
+    <time datetime="2016-01-10">
+    2016-01-10
+    </time> in
+    <span>Tech</span>
+</p>
+
+<div itemprop="articleBody">
+<p><img class="wide" src="/media/external/2016-01-10_webgl_sketch.jpg" alt="Sketches of WebGL cube and device rotation angles." /></p>
+<p>This demo and blog post almost didn&#8217;t see the light of day.
+The Web has produced <a href="http://www.playkeepout.com/">impressive</a> <a href="http://www.suissemania.ch/">3D apps</a>
+<a href="http://labs.gooengine.com/pearl-boy/">recently</a> and my concept seemed unremarkable compared to
+them. But after thinking about it for some time I realized I
+had built a <em>Hello World</em> example and it&#8217;s not fair to compare
+it to other apps. And my <em>Hello World</em> packs some interesting
+features&nbsp;too.</p>
+<p>I recommend opening the link on a phone or a tablet. I tested
+it in Chrome and Safari, so it should work on all newer
+Android and iOS devices. It will also work on desktop
+browsers, but you&#8217;ll have to start the animation&nbsp;manually.</p>
+<p><a href="http://merlin.rebrovic.net/experiment/webgl-cube/">http://merlin.rebrovic.net/experiment/webgl-cube/</a></p>
+<p>If it got you interested, read on about my motivation and the
+technology used to build&nbsp;it.</p>
+<h2>Motivation</h2>
+<p><a href="http://caniuse.com/#feat=webgl">WebGL support</a> is improving daily and our mobile devices
+are more powerful than our desktop computers from a couple of
+years ago. All of this rekindled my passion for computer
+graphics. At the university I took all available computer
+graphics and virtual reality classes. There weren&#8217;t as many
+as I wanted, but I had the opportunity to play with OpenGL and
+C among other&nbsp;things.</p>
+<p>Times have changed and JavaScript is all the rage nowadays.
+WebGL, a subset of OpenGL for the Web, is supported by many
+browsers today, so I wanted to give it a try. The problem is I
+completely forgot how OpenGL&nbsp;works.</p>
+<p>I had found a <a href="https://www.coursera.org/course/webgl">WebGL course on Coursera</a> and decided I&#8217;ll
+use it as a paced refresher. During the whole summer I was
+watching lectures and doing homework in my off-work hours. It
+was like being in school again&#8212;working and studying at the
+same&nbsp;time.</p>
+<p>I passed the course mid-September last year. I built some
+interesting things for assignments, but couldn&#8217;t share them
+due to Coursera&#8217;s restrictions; future course students might
+use them as their own submissions. At the same time, I wanted
+to build something for mobile. At concat in March 2015,
+<a href="https://www.youtube.com/watch?v=X3-EL2XRUXU">Franzisca Hinkelmann</a> demonstrated new and interesting web
+<abbr title="Application Programming Interface"><span class="caps">API</span></abbr>s.
+One of them was <em>device orientation</em> and it just stuck in my&nbsp;mind.</p>
+<p>It is not a surprise my first idea was to build something in
+WebGL that would react to rotation of a mobile device. I coded
+the concept in early fall, but had to leave it unfinished due
+to travel and work. Winter holidays came to the rescue. One
+long weekend later and the cube was&nbsp;ready.</p>
+<h2>WebGL</h2>
+<p><a href="https://www.khronos.org/webgl/">WebGL</a> is the star of the show. It&#8217;s a flavor of OpenGL,
+<em>&#8220;first created as an open and reproducable alternative to
+Iris <span class="caps">GL</span> which had been the proprietary graphics <span class="caps">API</span> on Silicon
+Graphics workstations&#8221;</em> (<a href="https://www.opengl.org/wiki/History_of_OpenGL">source</a>). In short: old. It&#8217;s
+close to hardware and operates with global states, and that
+makes it hard to wrap your head around because it&#8217;s so
+different from modern application&nbsp;development.</p>
+<p>On top of that, WebGL requires two languages to function:
+JavaScript and <a href="https://www.opengl.org/documentation/glsl/"><span class="caps">GLSL</span></a>. The first is for initialization and
+application logic (events, interface manipulation, etc). The
+second resembles C and is used to write <em>shaders</em>.</p>
+<p><em>Vertex and fragment shaders</em> are <span class="caps">GLSL</span> programs which modify
+positions of vertices and colors of surfaces respectively.
+They run on <abbr title="Graphical Processing Unit"><span class="caps">GPU</span></abbr>
+and can process huge amounts of data. Imagine a 3D scene with
+millions of vertices. If the camera rotates, all vertices have
+to change their position. This would be slow in JavaScript on
+a single thread in a browser, but is running blazing fast on a
+dedicated hardware. <em>Shaders</em> are linked from <span class="caps">HTML</span> the same
+way as JavaScript and <span class="caps">CSS</span>.</p>
+<p>I didn&#8217;t use any libraries to build the WebGL cube. I borrowed
+some helper functions from the author of the course to help
+with WebGL initialization and managing transformation of
+vectors and matrices between JavaScript and <span class="caps">GLSL</span>. Working
+bare-bones was a great learning experience, but also hard.
+Unless I&#8217;ll want to build my own WebGL engine, I&#8217;ll use
+<a href="http://threejs.org/">three.js</a>, <a href="https://github.com/GooTechnologies/goojs">GooEngine</a>, or some other library in the
+future because they provide a reasonable level of&nbsp;abstraction.</p>
+<p>One resource I highly recommend is <a href="http://webglfundamentals.org/">WebGL Fundamentals</a>.
+It&#8217;s a series of almost thirty in-depth articles with clear
+explanations, code examples, and&nbsp;visualizations.</p>
+<h2>Device&nbsp;orientation</h2>
+<p>Detecting device orientation is critical for this concept and
+fortunately not complex. An event listener is added to
+<em>deviceorientation</em> if supported and the event returns 
+three angles which define the physical device in&nbsp;space.</p>
+<p>The biggest problem is inconsistency; different browser makers
+return different ranges for angles, so the cube might rotate
+in different directions if viewed in two different&nbsp;browsers.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation"><span class="caps">MDN</span> docs</a> should be more than enough to start with device&nbsp;orientation.</p>
+<p>One tip to keep in mind: even desktop browsers support this,
+so it&#8217;s a not good indicator that someone is browsing on a
+mobile&nbsp;device.</p>
+<h2>Screen&nbsp;orientation</h2>
+<p>The last thing I needed was to detect the screen orientation
+change. I needed that for two&nbsp;reasons:</p>
+<ol>
+<li>If I rotate a device to the side, my &#8220;up&#8221; and device&#8217;s &#8220;up&#8221;
+   don&#8217;t match anymore, so I need to read different angles. To
+   make things worse, I can rotate the device to left or&nbsp;right.</li>
+<li>I wanted to make the cube always fully visible on the
+   screen so I needed to resize the drawing&nbsp;canvas.</li>
+</ol>
+<p>I first looked into <a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen/orientation">Screen Orientation <span class="caps">API</span></a>. It is not as
+supported as Device Orientation and different browsers return
+different values depending on what they think &#8220;the right
+orientation for that device&#8221; should be. While searching for an
+easy solution I stumbled upon an interesting article that
+describes <a href="http://www.creativebloq.com/web-design/master-screen-orientation-html5-101517371">six <span class="caps">CSS</span> and JavaScript techniques to detect screen
+orientation</a>.</p>
+<p>In the end I settled on something quick and dirty&#8212;I&#8217;m
+listening to <em>resize</em> event and checking if the viewport ratio
+changed. It&#8217;s not flawless and will break in some cases, but
+does two things at the same&nbsp;time:</p>
+<ol>
+<li>Handles resizing of desktop&nbsp;browsers.</li>
+<li>Mobile browsers, for now, change their viewport ratios only
+   when rotated. We&#8217;ll see how it&#8217;ll work out with split pane
+   functionality some tablets will support in the&nbsp;future.</li>
+</ol>
+<p>And that&#8217;s all there is to it. Now go and <a href="/blog/create.html">create something</a>.</p></div>
+</article>
+
+<hr class="reading-block">
+
+<p class="reading-block">Don’t miss this one:<br />
+     <a href="/blog/focus-on-days.html">
+    Focus on days</a>
+</p>
+
+        </div>
+    <nav id="bottom-nav" class="clearfix">
+<ul class="clearfix">
+                <li><a
+        href="/index.html">Home</a></li>
+    
+                <li class="active"><a
+        href="/blog/">Blog</a></li>
+    
+                <li><a
+        href="/speaking.html">Speaking</a></li>
+    
+                <li><a
+        href="/about.html">About</a></li>
+    
+    </ul>
+</nav>
+    <a href="#top" class="back-to-top">Back to top &#x25b2;</a>
+
+<script src="/media/js/app.js?v=2d804c"></script>
+</body>
+</html>
