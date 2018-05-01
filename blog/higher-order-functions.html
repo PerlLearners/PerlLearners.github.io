@@ -7,14 +7,37 @@ check out the building blocks.
 You can also subscribe to blog posts by following me on Twitter
 https://twitter.com/merlinrebrovic
 -->
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/BlogPosting" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#20201C">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <title>Blog – Varad Blogs</title>
-    <link rel="stylesheet" href="/media/css/fonts.css" type="text/css">
+    <title>Performance experiment – Varad Blogs</title>
+    <meta itemprop="name"
+          property="og:title"
+          name="twitter:title"
+          content="Performance experiment">
+    <meta itemprop="description"
+          property="og:description"
+          name="twitter:description"
+          content="A simple performance experiment to compare the performance of higher order functions like lambda, map and filter against the comprehensionss.">
+    <meta itemprop="image"
+          property="og:image"
+          name="twitter:image:src"
+          content="http://PerlLearners.github.io/media/external/2013-10-19_ux_books_covers.jpg">
+    <meta itemprop="url"
+          property="og:url"
+          content="http://PerlLearners.github.io/blog/higher-order-functions.html" />
+    <meta itemprop="datePublished"
+          property="article:published_time"
+          content="2018-02-19" />
+    <meta itemprop="articleSection"
+          property="article:section"
+          content="Tech" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@merlinrebrovic">
+    <meta property="og:type" content="article" />    <link rel="stylesheet" href="/media/css/fonts.css" type="text/css">
     <link rel="stylesheet" href="/media/css/style.css?v=c0f00a" type="text/css">
 </head>
 <body>
@@ -43,25 +66,9 @@ https://twitter.com/merlinrebrovic
     </header>
 
     <div id="main-content" class="clearfix">
-                <article class="asymetrical-columns-left reading-block clearfix">
-<p>I write about programming, technology, and people.
-Sometimes I take photos of places I visit.</p>
+                <article class="reading-block">
 
-<h2>Featured posts</h2>
-<ul>
-    <li><a href=""></a></li>
-</ul>
-
-<!-- <p><a href="/blog/archive.html">Archive</a>
-&ndash; if you're interested in older posts or looking for something specific.</p> -->
-</article>
-
-<article class="asymetrical-columns-right reading-block">
-<h2>Latest posts</h2>
-
-
-<article class="excerpt">
-<h1><a href="/blog/higher-order-functions.html">Performance&nbsp;experiment</a></h1>
+<h1 itemprop="headline">Performance&nbsp;experiment</h1>
 <p class="post-meta">
     Posted on
     <time datetime="2018-02-19">
@@ -70,18 +77,21 @@ Sometimes I take photos of places I visit.</p>
     <span>Tech</span>
 </p>
 
-     <p>Example of a higher order function in python is <code>sorted</code>.</p>
+<div itemprop="articleBody">
+<p>Example of a higher order function in python is <code>sorted</code>.</p>
 <p><code>
 d = {'one':1, 'two':2, 'three':3}
 sorted(d.iteritems(), key=lambda&nbsp;(k,v):vs)</p>
-<p><code></p>
+<p><code></p></div>
 </article>
 
-<p>
-    If you want to read more, check out the
-    <a href="/blog/archive.html">archive</a>.
+<hr class="reading-block">
+
+<p class="reading-block">Don’t miss this one:<br />
+         <a href="/blog/higher-order-functions.html">
+    Performance experiment</a>
 </p>
-</article>
+
         </div>
     <nav id="bottom-nav" class="clearfix">
 <ul class="clearfix">
